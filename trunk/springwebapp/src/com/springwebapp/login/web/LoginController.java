@@ -36,8 +36,13 @@ public class LoginController {
 	
 	@RequestMapping(value = "/accessdenied", method = RequestMethod.GET)
 	public String accessDenied(ModelMap model) {
-		System.out.println("access denoed =======================");
+		System.out.println("accessdenied =======================");
 		return "accessDenied";
 	}
-
+	@RequestMapping(value = "/invalidSession", method = RequestMethod.GET)
+	public String invalidSession(ModelMap model) {
+		System.out.println("access denoed =======================");
+		return "invalidSession";
+	}
+	
 }
