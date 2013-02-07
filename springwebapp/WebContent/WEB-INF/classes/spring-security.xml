@@ -10,18 +10,20 @@
 	<http pattern="/css/**" security="none" />
 	<http pattern="/login.jsp*" security="none" />
 
-	<http auto-config='true' >
-		
-		
+	<http auto-config='true'>
+
+
 		<intercept-url pattern="/user*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/accessdenied*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		
-	<!-- 	<intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY" />  -->
-		
+
+		<!-- <intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY" 
+			/> -->
+
 		<intercept-url pattern="/**" access="ROLE_USER_MEMBER" />
-		
-		<form-login login-page="/login" default-target-url="/user" />
+
+		<form-login login-page="/login" default-target-url="/user"
+			authentication-failure-url="/loginfailed" />
 
 		<session-management invalid-session-url="/invalidSession">
 
