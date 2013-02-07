@@ -29,20 +29,7 @@ http://www.springframework.org/schema/aop
 		<aop:pointcut id="serviceMethods" expression="execution(* com.springwebapp..*.*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods" />
 	</aop:config>
-	<!-- 
-	<bean id="accessDeniedHandler"
-		class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
-		<property name="errorPage" value="/accessDenied.jsp" />
-	</bean>
 
-	<bean id="exceptionTranslationFilter"
-		class="org.springframework.security.web.access.ExceptionTranslationFilter">
-		 <property name="authenticationEntryPoint" ref="authenticationEntryPoint" /> 
-		<property name="accessDeniedHandler" ref="accessDeniedHandler" />
-
-	</bean>
-	
-	 -->
 
 
 </beans>
