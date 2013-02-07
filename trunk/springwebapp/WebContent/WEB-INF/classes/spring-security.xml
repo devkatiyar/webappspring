@@ -39,6 +39,18 @@
 		</authentication-provider>
 	</authentication-manager>
 
+	<beans:bean id="userDao" class="com.springwebapp.login.dao.UserDaoImpl">
+		<beans:constructor-arg ref="sessionFactory" />
+	</beans:bean>
+
+
+
+
+	<beans:bean id="userUserDetailsService"
+		class="com.springwebapp.login.services.UserUserDetailsService">
+		<beans:property name="userDao" ref="userDao" />
+	</beans:bean>
+
 	<beans:bean id="exceptionTranslationFilter"
 		class="org.springframework.security.web.access.ExceptionTranslationFilter">
 		<beans:property name="authenticationEntryPoint" ref="authenticationEntryPoint" />
