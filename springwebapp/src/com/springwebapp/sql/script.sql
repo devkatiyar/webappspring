@@ -14,12 +14,13 @@ CREATE TABLE `contacts` (
   `name` varchar(45) NOT NULL,
   `address` varchar(45) DEFAULT NULL,
   `gender` char(1) DEFAULT 'M',
-  `dob` datetime DEFAULT NULL,
+  `dob` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `mobile` varchar(15) DEFAULT NULL,
   `phone` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf
 
-
+-- Insert Into USER table
+INSERT INTO USERS VALUES('devendra','123',1,'ROLE_USER_MEMBER','dev@yahoo.com');
 
