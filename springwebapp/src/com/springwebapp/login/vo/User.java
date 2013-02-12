@@ -1,11 +1,23 @@
 package com.springwebapp.login.vo;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.GrantedAuthorityImpl;
+
+import com.springwebapp.login.vo.Authority;
 
 @Entity
 @Table(name = "USERS")
@@ -20,13 +32,20 @@ public class User {
 	
 	@Column(name = "ENABLED")
 	private Boolean enabled;
-	
+	/*
 	@Column(name = "ROLE")
 	private String role;
-	
+	*/
+	/*
 	@Column(name = "EMAIL")
 	private String email;
+	*/
+	
+	@OneToOne
+	@JoinColumn(name = "USERNAME")
+	private Authority authority;
 
+	
 	public User() {
 	}
 
@@ -35,8 +54,8 @@ public class User {
 		this.username = username;
 		this.password = password;
 		this.enabled = isEnabled;
-		this.role = role;
-		this.email = email;
+		//this.role = role;
+		//this.email = email;
 	}
 
 	/**
@@ -87,30 +106,57 @@ public class User {
 	/**
 	 * @return the roles
 	 */
-	public String getRole() {
-		return role;
+//	public String getRole() {
+//		return role;
+//	}
+//
+//	/**
+//	 * @param roles
+//	 *            the roles to set
+//	 */
+//	public void setRole(String roles) {
+//		this.role = roles;
+//	}
+
+//	/**
+//	 * @return the emailAddress
+//	 */
+//	public String getEmail() {
+//		return email;
+//	}
+//
+//	/**
+//	 * @param emailAddress
+//	 *            the emailAddress to set
+//	 */
+//	public void setEmail(String emailAddress) {
+//		this.email = emailAddress;
+//	}
+	
+	
+	// Getters and setters for relation property
+	public Authority getAuthority() {
+		return this.authority;
 	}
 
-	/**
-	 * @param roles
-	 *            the roles to set
-	 */
-	public void setRole(String roles) {
-		this.role = roles;
+	public void setAuthority(Authority authority) {
+		this.authority = authority;
 	}
+	
+	// Spring Security props
+	private transient Collection<GrantedAuthority> authorities;
 
-	/**
-	 * @return the emailAddress
-	 */
-	public String getEmail() {
-		return email;
+	// UserDetails methods
+	@Transient
+	public Collection<GrantedAuthority> getAuthorities() {
+		return authorities;
 	}
-
-	/**
-	 * @param emailAddress
-	 *            the emailAddress to set
-	 */
-	public void setEmail(String emailAddress) {
-		this.email = emailAddress;
+	@Transient
+	public void setUserAuthorities(List<String> authorities) {
+		List<GrantedAuthority> listOfAuthorities = new ArrayList<GrantedAuthority>();
+		for (String role : authorities) {
+			listOfAuthorities.add(new GrantedAuthorityImpl(role));
+		}
+		this.authorities = (Collection<GrantedAuthority>) listOfAuthorities;
 	}
 }

@@ -34,14 +34,12 @@ public class LoginController {
 		return "login";
 	}
 	
-	@RequestMapping(value = "/accessdenied", method = RequestMethod.GET)
+	@RequestMapping(value = "/accessdenied", method = RequestMethod.POST)
 	public String accessDenied(ModelMap model) {
-		System.out.println("accessdenied =======================");
 		return "accessDenied";
 	}
 	@RequestMapping(value = "/invalidSession", method = RequestMethod.GET)
 	public String invalidSession(ModelMap model) {
-		System.out.println("access denoed =======================");
 		return "invalidSession";
 	}
 	

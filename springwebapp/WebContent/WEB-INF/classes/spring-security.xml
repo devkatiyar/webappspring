@@ -10,17 +10,17 @@
 	<http pattern="/css/**" security="none" />
 	<http pattern="/login.jsp*" security="none" />
 
-	<http auto-config='true'>
+	<http auto-config='true'  >
 
 
 		<intercept-url pattern="/user*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/accessdenied*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-
+		<access-denied-handler ref="accessDeniedHandler"/>
 		<!-- <intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY" 
 			/> -->
 
-		<intercept-url pattern="/**" access="ROLE_USER_MEMBER" />
+		<intercept-url pattern="/**" access="ROLE_MEMBER,ROLE_ADMIN" />
 
 		<form-login login-page="/login" default-target-url="/user"
 			authentication-failure-url="/loginfailed" />
@@ -43,13 +43,22 @@
 		<beans:constructor-arg ref="sessionFactory" />
 	</beans:bean>
 
-
-
-
+	
+	<beans:bean id="userService" class="com.springwebapp.login.services.UserServiceImpl" >
+	<beans:property name="userDao" ref="userDao" />
+	</beans:bean>
+	
+	<beans:bean id="userUserDetailsService" class="com.springwebapp.login.services.UserUserDetailsService">
+		<beans:constructor-arg ref="userService" />
+	</beans:bean>
+	
+	<!-- 
 	<beans:bean id="userUserDetailsService"
 		class="com.springwebapp.login.services.UserUserDetailsService">
 		<beans:property name="userDao" ref="userDao" />
 	</beans:bean>
+	
+	 -->
 
 	<beans:bean id="exceptionTranslationFilter"
 		class="org.springframework.security.web.access.ExceptionTranslationFilter">
@@ -64,7 +73,9 @@
 
 	<beans:bean id="accessDeniedHandler"
 		class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
-		<beans:property name="errorPage" value="/jsp/accessDenied.jsp" />
+		
+		<beans:property name="errorPage" value="/accessdenied" />
+		
 	</beans:bean>
 
 </beans:beans>
