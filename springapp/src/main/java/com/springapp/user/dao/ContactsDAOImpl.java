@@ -1,5 +1,6 @@
 package com.springapp.user.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -31,9 +32,10 @@ public class ContactsDAOImpl implements ContactsDAO{
 
 	@SuppressWarnings("unchecked")
 	public List<Contact> searchContacts(String name) {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
+		Session session=sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(
 				Contact.class);
-		criteria.add(Restrictions.ilike("name", name + "%"));
+		criteria.add(Restrictions.ilike("name", name + "%"));	
 		return criteria.list();
 	}
 
