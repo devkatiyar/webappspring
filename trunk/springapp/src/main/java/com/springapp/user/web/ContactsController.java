@@ -55,7 +55,6 @@ public class ContactsController {
 			@RequestParam(required = false, defaultValue = "") String name) {
 		ModelAndView mav = new ModelAndView("showContacts");
 		List<Contact> contacts = userService.searchContacts(name.trim());
-		System.out.println("=========================================="+contacts);
 		mav.addObject("SEARCH_CONTACTS_RESULTS_KEY", contacts);
 		return mav;
 	}

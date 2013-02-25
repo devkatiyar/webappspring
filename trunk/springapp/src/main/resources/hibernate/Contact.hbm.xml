@@ -1,0 +1,20 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.springapp.user.vo.Contact" table="CONTACTS">
+
+		 <!-- <cache usage="read-only" />  -->
+		<id name="id" column="ID" />
+		<property name="name" column="NAME" />
+		<property name="address" column="ADDRESS" />
+		<property name="gender" column="GENDER" />
+		<property name="dob" column="DOB" />
+		<property name="email" column="EMAIL" />
+		<property name="mobile" column="MOBILE" />
+		<property name="phone" column="PHONE" />
+		
+
+	</class>
+</hibernate-mapping>

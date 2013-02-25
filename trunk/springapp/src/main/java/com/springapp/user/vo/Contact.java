@@ -1,7 +1,5 @@
 package com.springapp.user.vo;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,26 +8,29 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-@Entity
-@Table(name = "CONTACTS")
+//@Entity
+//@Table(name = "CONTACTS")
+//@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class Contact {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	//@Id
+	//@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@Column
+	//@Column
 	private String name;
-	@Column
+	//@Column
 	private String address;
-	@Column
+	//@Column
 	private String gender;
-	@Column
+	//@Column
 	private String dob;
-	@Column
+	//@Column
 	private String email;
-	@Column
+	//@Column
 	private String mobile;
-	@Column
+	//@Column
 	private String phone;
 
 	@Override
