@@ -33,7 +33,7 @@ http://www.springframework.org/schema/aop
 		</property>
 		
 		<property name="mappingResources">
-			<value>Contact.hbm.xml</value>
+			<value>hibernate/Contact.hbm.xml</value>
 		</property>
 
 		<property name="hibernateProperties">
