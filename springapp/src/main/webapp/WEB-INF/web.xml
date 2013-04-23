@@ -5,7 +5,7 @@
 	id="WebApp_ID" version="2.5">
   <display-name>Archetype Created Web Application</display-name>
   <welcome-file-list>
-		<welcome-file>jsp/login.jsp</welcome-file>
+		<welcome-file>/login/login.jsp</welcome-file>
 	</welcome-file-list>
 
 	<servlet>
@@ -34,6 +34,11 @@
 		<param-value>classpath:spring-*.xml</param-value>
 		
 	</context-param>
+	
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>/static/*</url-pattern>
+	</servlet-mapping>
 	
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
