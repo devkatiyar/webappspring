@@ -1,0 +1,15 @@
+
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"> 
+
+
+	<defaultCache maxElementsInMemory="100" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="200" />
+
+	<cache name="com.springapp.user.vo.Contact" maxElementsInMemory="100" eternal="false"
+		timeToIdleSeconds="5" timeToLiveSeconds="200" />
+
+</ehcache>
+
+
+
